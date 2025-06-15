@@ -6,6 +6,7 @@ import { CarCardSkeleton } from './components/CarCardSkeleton';
 import { Pagination } from './components/Pagination';
 import { SortSelect } from './components/SortSelect';
 import { Car } from './types/car';
+import { Suspense } from 'react';
 
 const CarsGrid = ({ cars }: { cars: Car[] }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -31,7 +32,7 @@ const EmptyState = () => (
   <p className="text-center text-gray-500 mt-20">Нет данных для отображения</p>
 );
 
-export default function HomePage() {
+function PageContent() {
   const { cars, meta, isLoading, error } = useCars();
 
   const renderContent = () => {
@@ -49,5 +50,13 @@ export default function HomePage() {
         <Pagination currentPage={meta.page} pageCount={meta.last_page} />
       )}
     </main>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <PageContent />
+    </Suspense>
   );
 }
