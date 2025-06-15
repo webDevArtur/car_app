@@ -14,7 +14,7 @@ export const ImageWithFallback = ({ src, alt, className }: ImageWithFallbackProp
 
   if (error || !src) {
     return (
-      <div className={`bg-gray-200 flex items-center justify-center ${className}`}>
+      <div className={`bg-gray-200 flex items-center justify-center h-full ${className}`}>
         <span className="text-gray-500">Нет фото</span>
       </div>
     );

@@ -1,9 +1,5 @@
 import './globals.css';
 
-export const metadata = {
-  title: 'Продажа автомобилей',
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -13,6 +9,7 @@ export default function RootLayout({
     <html lang="ru">
       <head>
         <link rel="icon" href="/favicon.png"/>
+        <title>Продажа автомобилей</title>
       </head>
 
       <body>{children}</body>
